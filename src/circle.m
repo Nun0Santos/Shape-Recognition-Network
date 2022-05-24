@@ -7,18 +7,21 @@ function circle()
 
 IMG_RES = [28 28]; % de 224x224 passa a 30x30
 
+
+DataPath = ["circle","kite","parallelogram","square","trapezoid","triangle"];
 %% Ler e redimensionar as imagens e preparar os targets
 
-letrasBW = zeros(IMG_RES(1) * IMG_RES(2), 5);
+letrasBW = zeros(IMG_RES(1) * IMG_RES(2) * 3, 5);
 
-for i=1:5
-    img = imread(sprintf('..\\start\\circle\\circle-start-%d.png', i));
+for i=1:6
+    for j=1:5
+    img = imread(sprintf('..\\start\\%s\\%d.png', DataPath(i), j));
     img = imresize(img, IMG_RES);
     binarizedImg = imbinarize(img);
-    letrasBW(:, i) = reshape(binarizedImg, 1, []);
+    letrasBW(:, j) = reshape(binarizedImg, 1, []);
+    end
 end
-
-letrasTarget = [eye(10)];
+letrasTarget = [eye(5)];
 
 %% Preparar e treinar rede
 
