@@ -3,7 +3,11 @@ function trainNetwork
 %   Detailed explanation goes here
 %% Preparar e treinar rede
 
-net = feedforwardnet([10]);
+clc;
+
+xInput = input('Which folder do you want to open? ', 's');
+
+net = feedforwardnet((10));
 
 net.trainFcn = 'trainlm';
 net.layers{1}.transferFcn = 'tansig';
@@ -13,7 +17,17 @@ net.divideParam.trainRatio = 1;
 net.divideParam.valRatio = 0;
 net.divideParam.testRatio = 0;
 
-[in, target] = binarizedStartData();
+if(strcmpi(xInput, 'start'))
+    [in, target] = binarizedStartData();
+end
+
+if(strcmpi(xInput, 'test'))
+    [in, target] = binarizedTestData();
+end
+
+if(strcmpi(xInput, 'train'))
+    [in, target] = binarizedTrainData();
+end    
 
 [net,tr] = train(net, in, target);
 
