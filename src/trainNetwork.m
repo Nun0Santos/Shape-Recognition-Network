@@ -31,6 +31,8 @@ end
 
 [net,tr] = train(net, in, target);
 
+save("rede.mat", 'net');
+
 %% Simular e analisar resultados
 
 out = sim(net, in);
