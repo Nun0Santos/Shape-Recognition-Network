@@ -8,7 +8,6 @@ DataPath = ["circle","kite","parallelogram","square","trapezoid","triangle"];
 binaryMatrix = zeros(IMG_RES(1) * IMG_RES(2), 5);
 count = 1;
 targetMatrix = [];
-
 for i=1:6
     for j=1:5
         img = imread(sprintf('..\\start\\%s\\%d.png', DataPath(i), j));
@@ -18,6 +17,9 @@ for i=1:6
         binaryMatrix(:, count) = reshape(binarizedImg, 1, []);
         targetMatrix(count)=i;
         count = count + 1;
+        target(count)=i;
+        count=count+1;
+        Stashed changes
     end
 end
 in = binaryMatrix;

@@ -1,37 +1,37 @@
-function trainNetwork
+function trainNetwork(train,transfer1,transfer2,divide,trainRatio,valRatio,testRatio,folder,netName)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 %% Preparar e treinar rede
 
 clc;
 
-xInput = input('Which folder do you want to open? ', 's');
+%xInput = input('Which folder do you want to open? ', 's');
 
 net = feedforwardnet((10));
 
-net.trainFcn = 'trainlm';
-net.layers{1}.transferFcn = 'tansig';
-net.layers{2}.transferFcn = 'purelin';
-net.divideFcn = 'dividerand';
-net.divideParam.trainRatio = 1;
-net.divideParam.valRatio = 0;
-net.divideParam.testRatio = 0;
+net.trainFcn = train;
+net.layers{1}.transferFcn = transfer1;
+net.layers{2}.transferFcn = transfer2;
+net.divideFcn = divide;
+net.divideParam.trainRatio = trainRatio;
+net.divideParam.valRatio = valRatio;
+net.divideParam.testRatio = testRatio;
 
-if(strcmpi(xInput, 'start'))
+if(strcmpi(folder,'start'))
     [in, target] = binarizedStartData();
 end
 
-if(strcmpi(xInput, 'test'))
+if(strcmpi(folder, 'test'))
     [in, target] = binarizedTestData();
 end
 
-if(strcmpi(xInput, 'train'))
+if(strcmpi(folder, 'train'))
     [in, target] = binarizedTrainData();
 end    
 
 [net,tr] = train(net, in, target);
 
-save("rede.mat", 'net');
+save(netName, 'net');
 
 %% Simular e analisar resultados
 
