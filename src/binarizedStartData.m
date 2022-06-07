@@ -6,8 +6,9 @@ DataPath = ["circle","kite","parallelogram","square","trapezoid","triangle"];
 %% Ler e redimensionar as imagens e preparar os targets
 
 binaryMatrix = zeros(IMG_RES(1) * IMG_RES(2), 5);
-count = 1;
 targetMatrix = [];
+count = 1;
+
 for i=1:6
     for j=1:5
         img = imread(sprintf('..\\start\\%s\\%d.png', DataPath(i), j));
@@ -15,13 +16,21 @@ for i=1:6
         img = imresize(img, IMG_RES);
         binarizedImg = imbinarize(img);
         binaryMatrix(:, count) = reshape(binarizedImg, 1, []);
-        targetMatrix(count)=i;
-        count = count + 1;
-        target(count)=i;
+        targetMatrix(count) = i; 
         count=count+1;
-        Stashed changes
     end
+    count = 1;
 end
+
+% vec1 = repelem(1, 5);
+% vec2 = repelem(2, 5);
+% vec3 = repelem(3, 5);
+% vec4 = repelem(4, 5);
+% vec5 = repelem(5, 5);
+% vec6 = repelem(6, 5);
+% targetMatrix = [vec1, vec2, vec3, vec4, vec5, vec6];
+% 
+% target = onehotencode(targetMatrix,1,'ClassNames',1:6);
 in = binaryMatrix;
 target = targetMatrix;
 end
