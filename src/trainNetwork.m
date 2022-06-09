@@ -56,7 +56,7 @@ if(load ~= "yes")
     return;
 end
 
-[input, targets] = binarizedStartData();
+[input, targets] = binarizedTestData();
 
 out = sim(net, input);
 

@@ -16,6 +16,9 @@ end
 
 out = sim(net, in);
 
+%disp(out)
+save("out.mat", "out");
+
 r=0;
 for i=1:size(out,2)               
     [a, b] = max(out(:,i));      
