@@ -32,5 +32,4 @@ targetMatrix = [vec1, vec2, vec3, vec4, vec5, vec6];
 
 target = onehotencode(targetMatrix,1,'ClassNames',1:6);
 in = binaryMatrix;save("in.mat", "in");
-%target = targetMatrix;
 end
