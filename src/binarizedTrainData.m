@@ -19,18 +19,16 @@ for i=1:6
     targetMatrix(count) = i;
     count = count +1;
     end
-    count = 1;
 end
 
-% vec1 = repelem(1, 50);
-% vec2 = repelem(2, 50);
-% vec3 = repelem(3, 50);
-% vec4 = repelem(4, 50);
-% vec5 = repelem(5, 50);
-% vec6 = repelem(6, 50);
-% targetMatrix = [vec1, vec2, vec3, vec4, vec5, vec6];
-% 
-% target = onehotencode(targetMatrix,1,'ClassNames',1:6);
+vec1 = repelem(1, 50);
+vec2 = repelem(2, 50);
+vec3 = repelem(3, 50);
+vec4 = repelem(4, 50);
+vec5 = repelem(5, 50);
+vec6 = repelem(6, 50);
+targetMatrix = [vec1, vec2, vec3, vec4, vec5, vec6];
+
+target = onehotencode(targetMatrix,1,'ClassNames',1:6);
 in = binaryMatrix;
-target = targetMatrix;
 end
