@@ -15,6 +15,7 @@ if(strcmpi(folder, 'train'))
 end    
 
 out = sim(net, in);
+size(out)
 
 %disp(out)
 save("out.mat", "out");

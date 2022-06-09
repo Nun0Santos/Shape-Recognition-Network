@@ -1,4 +1,4 @@
-function trainNetwork(trainParam,transfer1,transfer2,divide,trainRatio,valRatio,testRatio,folder,netName, load)
+function trainNetwork(trainParam,transfer1,transfer2,divide,trainRatio,valRatio,testRatio,folder,netName)
 %(trainParam,transfer1,transfer2,divide,trainRatio,valRatio,testRatio,folder,netName)
 %load("reeed.mat", "net");  
 %UNTITLED2 Summary of this function goes here
@@ -48,27 +48,27 @@ for i=1:size(out,2)
       r = r+1;
     end
 end
-%plotconfusion(target, out);
-accuracy = r/size(out,2);
-fprintf('Precisão total de treino %f\n', accuracy);
-
-if(load ~= "yes")
-    return;
-end
-
-[input, targets] = binarizedTestData();
-
-out = sim(net, input);
-
-r=0;
-for i=1:size(tr.testInd,2)              
-  [a b] = max(out(:,i));         
-  [c d] = max(targets(:,i)); 
-  if b == d 
-      r = r+1;
-  end
-end
-accuracy = r/size(tr.testInd,2)*100;
-fprintf('Precisao teste %f\n', accuracy)
+% %plotconfusion(target, out);
+% accuracy = r/size(out,2);
+% fprintf('Precisão total de treino %f\n', accuracy);
+% 
+% if(load ~= "yes")
+%     return;
+% end
+% 
+% [input, targets] = binarizedTestData();
+% 
+% out = sim(net, input);
+% 
+% r=0;
+% for i=1:size(tr.testInd,2)              
+%   [a b] = max(out(:,i));         
+%   [c d] = max(targets(:,i)); 
+%   if b == d 
+%       r = r+1;
+%   end
+% end
+% accuracy = r/size(tr.testInd,2)*100;
+% fprintf('Precisao teste %f\n', accuracy)
 
 end

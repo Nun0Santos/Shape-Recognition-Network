@@ -11,7 +11,7 @@ count = 1;
 
 for i=1:6
     for j=1:5
-        img = imread(sprintf('..\\start\\%s\\%d.png', DataPath(i), j));
+         img = imread(sprintf('..\\start\\%s\\%d.png', DataPath(i), j));
         img = rgb2gray(img);
         img = imresize(img, IMG_RES);
         binarizedImg = imbinarize(img);
