@@ -1,6 +1,6 @@
 function [in, target] =  binarizedTrainData()
 
-IMG_RES = [28 28]; % de 224x224 passa a 30x30
+IMG_RES = [25 25]; % de 224x224 passa a 30x30
 
 DataPath = ["circle","kite","parallelogram","square","trapezoid","triangle"];
 %% Ler e redimensionar as imagens e preparar os targets
@@ -16,7 +16,6 @@ for i=1:6
     img = imresize(img, IMG_RES);
     binarizedImg = imbinarize(img);
     binaryMatrix(:, count) = reshape(binarizedImg, 1, []);
-    targetMatrix(count) = i;
     count = count +1;
     end
 end

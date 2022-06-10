@@ -29,6 +29,6 @@ switch(b)
         output = "triangle";
     otherwise
         %fprintf("Could not recognize")
-        output = "Could not recognize";
+        
 end
 end

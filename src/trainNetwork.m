@@ -1,15 +1,6 @@
-function trainNetwork(trainParam,transfer1,transfer2,divide,trainRatio,valRatio,testRatio,folder,netName)
-%(trainParam,transfer1,transfer2,divide,trainRatio,valRatio,testRatio,folder,netName)
-%load("reeed.mat", "net");  
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
-%% Preparar e treinar rede
+function [output] = trainNetwork(trainParam, transfer1,transfer2,divide,trainRatio,valRatio,testRatio,folder,netName)
 
-clc;
-
-%xInput = input('Which folder do you want to open? ', 's');
-
-net = feedforwardnet((10));
+net = feedforwardnet(10);
 net.trainFcn = trainParam;
 net.layers{1}.transferFcn = transfer1;
 net.layers{2}.transferFcn = transfer2;
@@ -38,8 +29,6 @@ save(netName, 'net');
 
 out = sim(net, in);
 
-disp(tr);
-
 r = 0;
 for i=1:size(out,2)
     [a, b] = max(out(:,i));
@@ -48,27 +37,9 @@ for i=1:size(out,2)
       r = r+1;
     end
 end
-% %plotconfusion(target, out);
-% accuracy = r/size(out,2);
-% fprintf('Precisão total de treino %f\n', accuracy);
-% 
-% if(load ~= "yes")
-%     return;
-% end
-% 
-% [input, targets] = binarizedTestData();
-% 
-% out = sim(net, input);
-% 
-% r=0;
-% for i=1:size(tr.testInd,2)              
-%   [a b] = max(out(:,i));         
-%   [c d] = max(targets(:,i)); 
-%   if b == d 
-%       r = r+1;
-%   end
-% end
-% accuracy = r/size(tr.testInd,2)*100;
-% fprintf('Precisao teste %f\n', accuracy)
+
+accuracy = r/size(out,2);
+output = accuracy*100;
+%fprintf('Precisão total de treino %f\n', accuracy);
 
 end

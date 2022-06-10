@@ -1,4 +1,4 @@
-function loadNetwork(netName,folder)
+function [output] = loadNetwork(netName,folder)
 
 load(netName, "net"); 
 
@@ -15,10 +15,6 @@ if(strcmpi(folder, 'train'))
 end    
 
 out = sim(net, in);
-size(out)
-
-%disp(out)
-save("out.mat", "out");
 
 r=0;
 for i=1:size(out,2)               
@@ -29,9 +25,8 @@ for i=1:size(out,2)
     end
 end
 
-%plotconfusion(target, out);
 accuracy = r/size(out,2);
 
-fprintf('Precisao total = %f\n', accuracy*100)
+output = accuracy*100;
 
 end
