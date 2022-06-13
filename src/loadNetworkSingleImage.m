@@ -1,8 +1,8 @@
-function [output] = loadNetworkSingleImage(netName,imgPath)
+function [output] = loadNetworkSingleImage(netName,imgPath, inMatrix)
 
 load(netName, "net");
 
-in = binarizedImageApp(imgPath);
+in = binarizedImageApp(imgPath, inMatrix);
 
 out = sim(net, in);
 

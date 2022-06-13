@@ -1,6 +1,6 @@
 function [output] = trainNetwork(trainParam, transfer1,transfer2,divide,trainRatio,valRatio,testRatio,folder,netName)
 
-net = feedforwardnet(10);
+net = feedforwardnet([10 10 5]);
 net.trainFcn = trainParam;
 net.layers{1}.transferFcn = transfer1;
 net.layers{2}.transferFcn = transfer2;
@@ -23,7 +23,9 @@ end
 
 [net,tr] = train(net, in, target);
 
-save(netName, 'net');
+
+str = strcat("..\\networks\\", netName);
+save(str, 'net');
 
 %% Simular e analisar resultados
 
