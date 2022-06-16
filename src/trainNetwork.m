@@ -1,6 +1,6 @@
 function [output] = trainNetwork(trainParam, transfer1,transfer2,divide,trainRatio,valRatio,testRatio,folder,netName)
 
-net = feedforwardnet([10 10 5]);
+net = feedforwardnet([10]);
 net.trainFcn = trainParam;
 net.layers{1}.transferFcn = transfer1;
 net.layers{2}.transferFcn = transfer2;
@@ -39,7 +39,7 @@ for i=1:size(out,2)
       r = r+1;
     end
 end
-
+plotconfusion(target,out)
 accuracy = r/size(out,2);
 output = accuracy*100;
 %fprintf('Precisão total de treino %f\n', accuracy);
